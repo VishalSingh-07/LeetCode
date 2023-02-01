@@ -24,33 +24,38 @@ using namespace std;
 
 
 // Applying Binary Search on each row
-// Time complexity --> O(n+logm) and Space --> O(1)
+// Time complexity --> O(n*logm) and Space --> O(1)
 // where m = number of columns and n= number of rows
-// class Solution {
-// public:
-//     bool searchMatrix(vector<vector<int>>& matrix, int target) {
-//         int n=matrix.size(); // Number of rows
-//         int m=matrix[0].size(); //Number of columns
-//         int low=0,high=m-1;
-//         while(low>=0 && low<n && high>=0 && high<m)
-//         {
-//             if(matrix[low][high]==target)
-//             {
-//                 return true;
-//             }
-//             else if(matrix[low][high]>target)
-//             {
-//                 high--;
-//             }
-//             else if(matrix[low][high]<target)
-//             {
-//                 low++;
-//             }
-//         }
-//         return false;
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int n=matrix.size();// number of rows;
+        int m=matrix[0].size(); // number of columns
+        for(int i=0;i<n;i++)
+        {
+            int low=0;
+            int high=m-1;
+            while(low<=high)
+            {
+                int mid=low+(high-low)/2; // finding mid of the row
+                if(matrix[i][mid]==target)
+                {
+                    return true; // if target matches then return true
+                }
+                else if(matrix[i][mid]<target)
+                {
+                    low=mid+1;
+                }
+                else if(matrix[i][mid]>target)
+                {
+                    high=mid-1;
+                }
+            }
+        }
+        return false;
         
-//     }
-// };
+    }
+};
 
 // Start from last index
 // Time complexity --> O(m+n) and Space --> O(1)
