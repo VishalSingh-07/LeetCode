@@ -55,7 +55,7 @@ You must also not convert the inputs to integers directly.
 */
 
 // Optimized Approach
-// Time complexity -> O(max(n,m)) and Space -> O(max(n,m))
+// Time complexity -> O(max(n,m)) and Space -> O(1)
 // Where n =  length of string num1 and m = length of string num2
 class Solution {
 public:
