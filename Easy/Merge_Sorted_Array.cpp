@@ -1,13 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
-/*
-Approach 1: Copy elements of second array into first and sort the merged array (Time complexity --> O(klogk) and space :-- O(1))
-where k = m + n;
 
-Approach 2: Two Pointer Approach 
-Time complexity -->  O(k) and space: -- O(1)
-where k=m+n
-**/
+
+// Brute Force Approach 
+// Copy elements of second array into first and sort the merged array 
+// Time complexity --> O(klogk) and space :-- O(m+n)
+// where k = m + n;
 
 // class Solution {
 // public:
@@ -32,15 +30,54 @@ where k=m+n
 //         {
 //             nums1.push_back(it);
 //         }
-
-        
-        
 //     }
 // };
 
 
+// Better Approach
+// Time complexity -> O(n+m) and Space -> O(n+m)
+// class Solution {
+// public:
+//     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
 
-// Approach 2
+//         vector<int> nums3(n+m);
+//         int left=0;
+//         int right=0;
+//         int index=0;
+
+//         while(left<m && right<n)
+//         {
+//             if(nums1[left]<=nums2[right])
+//             {
+//                 nums3[index]=nums1[left];
+//                 left++;
+//                 index++;
+//             }
+//             else
+//             {
+//                 nums3[index]=nums2[right];
+//                 right++;
+//                 index++;
+//             }
+//         }
+//         while(left<m)
+//         {
+//             nums3[index++]=nums1[left++];
+//         }
+//         while(right<n)
+//         {
+//             nums3[index++]=nums2[right++];
+//         }
+//         for(int i=0;i<n+m;i++)
+//         {
+//             nums1[i]=nums3[i];
+//         }
+//     }
+// };
+
+
+// Optimized Approach [Two Pointer Approach] 
+// Time complexity -->  O(m+n) and space: -- O(1)
 class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
@@ -67,6 +104,9 @@ public:
     }
 };
 
+
 // Question link -- https://leetcode.com/problems/merge-sorted-array/description/
+
+// Solution link -- https://leetcode.com/problems/merge-sorted-array/solutions/3727130/3-approach-easy-c-solution-brute-force-better-and-optimized-approach/
 
 // Youtube Video Link -- https://youtu.be/C4oBXLr3zos
