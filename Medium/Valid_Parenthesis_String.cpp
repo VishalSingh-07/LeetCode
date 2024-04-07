@@ -110,6 +110,33 @@ public:
     }
 };
 
+// OR
+
+class Solution {
+public:
+    bool checkValidString(string s) {
+        int open=0; //For keeping count in Left to right travers
+        int close=0; //For keeping count in Right to left travers
+        int n=s.length();
+        for(int i=0;i<n;i++){
+            if(s[i]=='(' || s[i]=='*'){
+                open++;
+            }else{
+                open--;
+            }
+            if(s[n-i-1]==')' || s[n-i-1]=='*'){
+                close++;
+            }else{
+                close--;
+            }
+
+            if(open<0 || close<0){
+                return false;
+            }
+        }
+        return true;
+    }
+};
 
 
 
