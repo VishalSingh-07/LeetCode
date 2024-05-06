@@ -82,7 +82,7 @@ public:
 
 
 
-// Optimized Approach [Iterative Approach]
+// Better Approach [Iterative Approach]
 // Time complexity -> O(n) and Space -> O(n)
 class Solution {
 public:
@@ -109,10 +109,42 @@ public:
 };
 
 
+// Optimized Approach 
+// Time complexity -> O(n) and Space -> O(1)
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> preorder;
+        TreeNode *curr=root;
+        while(curr!=nullptr){
+            if(curr->left==nullptr){
+                preorder.push_back(curr->val);
+                curr=curr->right;
+            }
+            else{
+                TreeNode *prev=curr->left;
+                while(prev->right!=nullptr && prev->right !=curr){
+                    prev=prev->right;
+                }
+                if(prev->right==nullptr){
+                    prev->right=curr;
+                    preorder.push_back(curr->val);
+                    curr=curr->left;
+                }
+                else{
+                    prev->right=nullptr;
+                    curr=curr->right;
+                }
+            }
+        }
+        return preorder;
+    }
+};
+
 /*
 1. Question Link -- https://leetcode.com/problems/binary-tree-preorder-traversal/description/
 
 2. Solution Link -- https://leetcode.com/problems/binary-tree-preorder-traversal/solutions/4609371/2-approach-easy-c-solution-brute-force-and-optimized-approach
 
-3. Reference Solution Link -- https://leetcode.com/problems/binary-tree-inorder-traversal/solutions/4381728/2-approach-easy-c-solution-brute-force-and-optimized-approach
+3. Reference Solution Link -- https://leetcode.com/problems/binary-tree-inorder-traversal/solutions/4381728/3-approach-best-c-solution-brute-force-better-and-optimized-approach
 */
